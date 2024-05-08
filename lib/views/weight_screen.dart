@@ -1,4 +1,7 @@
+// Screen that records the user's weight.
 import 'package:flutter/material.dart';
+import 'package:weight_tracker/views/progress_screen.dart';
+import 'package:weight_tracker/view_model/base_view_model.dart';
 
 class WeightScreen extends StatefulWidget {
   static const String id = 'weight_screen';
@@ -72,8 +75,8 @@ class _WeightScreenState extends State<WeightScreen> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: Text(
-                    'Create Profile',
-                    style: TextStyle(fontSize: 16),
+                    'Record',
+                    style: TextStyle(fontSize: 17),
                   ),
                 ),
               ),

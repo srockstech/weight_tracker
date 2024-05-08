@@ -1,3 +1,4 @@
+// Screen that accepts a new username and creates a new user profile.
 import 'package:flutter/material.dart';
 import 'package:weight_tracker/views/weight_screen.dart';
 
@@ -84,7 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: Text(
                     'Create Profile',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 17),
                   ),
                 ),
               ),
