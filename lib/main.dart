@@ -15,13 +15,19 @@
 // the most sense in terms of usability.
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:weight_tracker/locator.dart';
 import 'package:weight_tracker/views/welcome_screen.dart';
 import 'package:weight_tracker/views/weight_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   setupLocator();
+  await hiveLocalDb.init();
   runApp(const MyApp());
 }
 
