@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider: ^6.1.2
   get_it: ^7.6.7
+  fl_chart: ^0.68.0
+  hive: ^2.2.3
 
 dev_dependencies:
   flutter_test:
