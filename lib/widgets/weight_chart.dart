@@ -2,7 +2,7 @@
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:weight_tracker/model/weight_entry.dart';
+import 'package:weight_tracker/model/weight_entry/weight_entry.dart';
 import 'package:weight_tracker/view_model/weight_view_model.dart';
 
 class WeightChart extends StatelessWidget {
