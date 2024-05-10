@@ -6,17 +6,17 @@ part 'weight_entry.g.dart';
 @HiveType(typeId: 1)
 class WeightEntry extends HiveObject {
   @HiveField(0)
-  int? id;
+  int id;
   @HiveField(1)
   double? weight;
   @HiveField(2)
   DateTime? dateTime;
 
-  WeightEntry({this.id, this.weight, this.dateTime});
+  WeightEntry({required this.id, this.weight, this.dateTime});
 
   factory WeightEntry.fromJson(Map<String, dynamic> json) {
     return WeightEntry(
-      id: json['id'] as int?,
+      id: json['id'] as int,
       weight: json['weight'] as double?,
       dateTime: json['dateTime'] as DateTime?,
     );

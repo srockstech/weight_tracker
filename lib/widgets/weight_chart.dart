@@ -3,10 +3,9 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:weight_tracker/model/weight_entry/weight_entry.dart';
-import 'package:weight_tracker/view_model/weight_view_model.dart';
 
 class WeightChart extends StatelessWidget {
-  final WeightEntry model;
+  final List<WeightEntry?> model;
 
   const WeightChart({
     Key? key,
@@ -19,7 +18,14 @@ class WeightChart extends StatelessWidget {
       LineChartData(
         lineBarsData: [
           LineChartBarData(
-            spots: model.spots,
+            spots: model
+                .map(
+                  (e) => FlSpot(
+                    model.indexOf(e).toDouble(),
+                    e!.weight!,
+                  ),
+                )
+                .toList(),
             isCurved: true,
             color: Colors.blue,
             barWidth: 4,

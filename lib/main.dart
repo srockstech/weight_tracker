@@ -17,8 +17,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:weight_tracker/locator.dart';
-import 'package:weight_tracker/views/welcome_screen.dart';
+import 'package:weight_tracker/views/create_user_screen.dart';
+import 'package:weight_tracker/views/progress_screen.dart';
 import 'package:weight_tracker/views/weight_screen.dart';
+
+import 'model/user/user.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +31,7 @@ void main() async {
   ]);
   setupLocator();
   await hiveLocalDb.init();
+  debugPrint(hiveLocalDb.getAllUsers().first!.weightEntries.toString());
   runApp(const MyApp());
 }
 
@@ -44,7 +48,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => const WelcomeScreen(),
+        '/': (context) => (hiveLocalDb.getAllUsers().isNotEmpty)
+            ? const ProgressScreen()
+            : const CreateUserScreen(),
         WeightScreen.id: (context) => const WeightScreen(),
       },
     );

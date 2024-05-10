@@ -1,20 +1,21 @@
 // Screen that accepts a new username and creates a new user profile.
 import 'package:flutter/material.dart';
+import 'package:weight_tracker/views/progress_screen.dart';
 import 'package:weight_tracker/views/weight_screen.dart';
-import 'package:weight_tracker/view_model/welcome_view_model.dart';
+import 'package:weight_tracker/view_model/create_user_view_model.dart';
 import 'base_view.dart';
 
-class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+class CreateUserScreen extends StatefulWidget {
+  const CreateUserScreen({super.key});
 
   @override
-  State<WelcomeScreen> createState() => _WelcomeScreenState();
+  State<CreateUserScreen> createState() => _CreateUserScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _CreateUserScreenState extends State<CreateUserScreen> {
   @override
   Widget build(BuildContext context) {
-    return BaseView<WelcomeViewModel>(
+    return BaseView<CreateUserViewModel>(
       builder: (context, model, child) {
         return Scaffold(
           backgroundColor: Colors.black,
@@ -81,11 +82,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                   SizedBox(height: 10),
                   ElevatedButton(
-                    onPressed: () {
-                      // navigate to the next screen
-                      // where users can enter weight
-
-                      Navigator.pushNamed(context, WeightScreen.id);
+                    onPressed: () async {
+                      if (model.userNameController.text.isNotEmpty) {
+                        await model.createUser();
+                        Navigator.pushNamed(context, ProgressScreen.id);
+                      }
                     },
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 20),

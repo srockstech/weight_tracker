@@ -31,6 +31,11 @@ class HiveLocalDb {
     return await box.put(user.id, user);
   }
 
+  // functon to get all users from the users box
+  List<User?> getAllUsers() {
+    return usersBox.values.toList();
+  }
+
   Future<void> putWeightEntryInHive(WeightEntry? weightEntry) async {
     if (weightEntriesBox.containsKey(weightEntry!.id)) {
       await weightEntriesBox.delete(weightEntry.id);
@@ -38,10 +43,31 @@ class HiveLocalDb {
     await weightEntriesBox.put(weightEntry.id, weightEntry);
   }
 
-  List<WeightEntry?> getCurrentUserWeightEntries(User? user) {
-    List<int>? userWeightEntries = user!.weightEntries;
+  // function to get all weight entries from the weightEntries box
+  List<WeightEntry?> getAllWeightEntries() {
+    return weightEntriesBox.values.toList();
+  }
+
+  // function to update the user's weight entries list
+  Future<void> addWeightEntryToCurrentUser(int entryId) async {
+    List<int>? currentUserWeightEntries;
+    if (usersBox.values.toList().first!.weightEntries == null) {
+      currentUserWeightEntries = [entryId];
+    } else {
+      currentUserWeightEntries = usersBox.values.toList().first!.weightEntries;
+      currentUserWeightEntries!.add(entryId);
+    }
+    User currentUser = usersBox.values.toList().first!;
+    currentUser.weightEntries = currentUserWeightEntries;
+    await saveUserInHive(currentUser);
+  }
+
+  List<WeightEntry?> getCurrentUserWeightEntries() {
+    List<int>? userWeightEntries =
+        usersBox.values.toList().first!.weightEntries;
+    if (userWeightEntries == null) return [];
     // for each value in the userWeightEntries list, get the weight entry from the weightEntriesBox and add it to the list
-    List<WeightEntry?> currentUserWeightEntries = userWeightEntries!
+    List<WeightEntry?> currentUserWeightEntries = userWeightEntries
         .map((entryId) => weightEntriesBox.get(entryId))
         .toList();
     return currentUserWeightEntries;

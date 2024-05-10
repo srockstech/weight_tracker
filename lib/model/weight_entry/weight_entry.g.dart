@@ -17,7 +17,7 @@ class WeightEntryAdapter extends TypeAdapter<WeightEntry> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return WeightEntry(
-      id: fields[0] as int?,
+      id: fields[0] as int,
       weight: fields[1] as double?,
       dateTime: fields[2] as DateTime?,
     );
