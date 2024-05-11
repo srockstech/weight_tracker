@@ -2,15 +2,43 @@
 
 An app to track your body weight.
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- create multiple profiles
+- Add weight entries for each profile
+- View all weight entries for a profile
+- View a graph of your weight over time
+- Edit and delete weight entries
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Framework
+
+- Flutter
+
+## Architecture
+
+- MVVM
+
+## State Management
+
+- Provider
+
+## Dependency Injection
+
+- GetIt
+
+## Local Storage
+
+- Hive
+
+## Flutter packages used
+
+- provider
+- hive
+- fl_chart
+- get_it
+- build_runner
+- hive_generator
+- path_provider
