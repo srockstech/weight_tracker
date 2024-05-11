@@ -15,77 +15,116 @@ class WeightChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-      child: LineChart(
-        LineChartData(
-          lineBarsData: [
-            LineChartBarData(
-              spots: model
-                  .map(
-                    (e) => FlSpot(
-                      model.indexOf(e).toDouble(),
-                      e!.weight!,
-                    ),
-                  )
-                  .toList(),
-              isCurved: true,
-              color: Colors.blue,
-              barWidth: 4,
-              isStrokeCapRound: true,
-              belowBarData: BarAreaData(show: false),
-            ),
-          ],
-          titlesData: FlTitlesData(
-            leftTitles: AxisTitles(
-              drawBelowEverything: true,
-              axisNameWidget: Text(
-                'Weight (Kg)',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 5.0, right: 40, top: 40),
+        child: LineChart(
+          LineChartData(
+            lineBarsData: [
+              LineChartBarData(
+                spots: model
+                    .map(
+                      (e) => FlSpot(
+                        model.indexOf(e).toDouble(),
+                        e!.weight!,
+                      ),
+                    )
+                    .toList(),
+                isCurved: true,
+                color: Colors.blue,
+                barWidth: 4,
+                isStrokeCapRound: true,
+                belowBarData: BarAreaData(
+                  show: true,
+                  gradient: LinearGradient(
+                    colors: [Colors.blue, Colors.blue.withOpacity(0.1)],
+                    stops: [0.1, 0.8],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
                 ),
               ),
-              axisNameSize: 16,
-              sideTitles: SideTitles(
-                showTitles: true,
-                interval: 5,
-                reservedSize: 30,
-              ),
-            ),
-            bottomTitles: AxisTitles(
-              axisNameSize: 16,
-              axisNameWidget: Text(
-                'Date',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
+            ],
+            titlesData: FlTitlesData(
+              leftTitles: AxisTitles(
+                drawBelowEverything: true,
+                axisNameWidget: Text(
+                  'Weight (Kg)',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                axisNameSize: 25,
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  getTitlesWidget: (value, axis) {
+                    return Text(
+                      value.toInt().toString(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    );
+                  },
+                  interval: 4,
+                  reservedSize: 20,
                 ),
               ),
-              drawBelowEverything: true,
-              sideTitles: SideTitles(
-                showTitles: true,
-                reservedSize: 30,
-                interval: 1,
+              rightTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: false,
+                ),
+              ),
+              topTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: false,
+                ),
+              ),
+              bottomTitles: AxisTitles(
+                axisNameSize: 19,
+                axisNameWidget: Text(
+                  'Date',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                drawBelowEverything: true,
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  getTitlesWidget: (value, axis) {
+                    return Text(
+                      value.toInt().toString(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    );
+                  },
+                  reservedSize: 20,
+                  interval: 1,
+                ),
               ),
             ),
-          ),
-          borderData: FlBorderData(
-            show: true,
-            border: Border.all(
-              color: const Color(0xff37434d),
-              width: 1,
+            borderData: FlBorderData(
+              show: true,
+              border: Border.all(
+                color: const Color(0xff37434d),
+                width: 1,
+              ),
             ),
-          ),
-          gridData: FlGridData(
-            show: true,
-            drawVerticalLine: true,
-            drawHorizontalLine: true,
-            getDrawingHorizontalLine: (value) => FlLine(
-              color: const Color(0xff37434d),
-              strokeWidth: 1,
-            ),
-            getDrawingVerticalLine: (value) => FlLine(
-              color: const Color(0xff37434d),
-              strokeWidth: 1,
+            gridData: FlGridData(
+              show: true,
+              drawVerticalLine: true,
+              drawHorizontalLine: true,
+              getDrawingHorizontalLine: (value) => FlLine(
+                color: const Color(0xff37434d),
+                strokeWidth: 1,
+              ),
+              getDrawingVerticalLine: (value) => FlLine(
+                color: const Color(0xff37434d),
+                strokeWidth: 1,
+              ),
             ),
           ),
         ),
