@@ -3,11 +3,18 @@
 An app to track your body weight.
 
 ## Screenshots
-<img src="https://github.com/srockstech/weight_tracker/blob/main/screenshots/1.jpg" alt="Create User" height="500">
+
+- Create User
+<img src="https://github.com/srockstech/weight_tracker/blob/main/screenshots/1.jpg" alt="Create User"  height="500">
+- Progress Screen with no weight entries
 <img src="https://github.com/srockstech/weight_tracker/blob/main/screenshots/2.jpg" alt="Progress Screen with no weight entries" height="500">
+- Record New Weight
 <img src="https://github.com/srockstech/weight_tracker/blob/main/screenshots/3.jpg" alt="Record New Weight" height="500">
+- Progress Screen with weight entries and progress graph
 <img src="https://github.com/srockstech/weight_tracker/blob/main/screenshots/4.jpg" alt="Progress Screen with weight entries and progress graph" height="500">
+- Edit a weight entry
 <img src="https://github.com/srockstech/weight_tracker/blob/main/screenshots/5.jpg" alt="Edit a weight entry" height="500">
+- Change or add new profile
 <img src="https://github.com/srockstech/weight_tracker/blob/main/screenshots/6.jpg" alt="Change or add new profile" height="500">
 
 ## Features
