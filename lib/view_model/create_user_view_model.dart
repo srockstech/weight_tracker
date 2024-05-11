@@ -13,10 +13,21 @@ class CreateUserViewModel extends BaseModel {
     setState(ViewState.busy);
     List<User?> users = hiveLocalDb.getAllUsers();
     User newUser = User(
-        userName: userNameController.text,
-        id: (users.isEmpty) ? 0 : users.last!.id + 1,);
+      userName: userNameController.text,
+      id: (users.isEmpty) ? 0 : users.last!.id + 1,
+    );
     await hiveLocalDb.saveUserInHive(newUser);
     debugPrint('New user saved in hive');
     setState(ViewState.idle);
+  }
+
+  bool userExists() {
+    List<User?> users = hiveLocalDb.getAllUsers();
+    for (User? user in users) {
+      if (user!.userName == userNameController.text) {
+        return true;
+      }
+    }
+    return false;
   }
 }

@@ -43,6 +43,15 @@ class HiveLocalDb {
     await weightEntriesBox.put(weightEntry.id, weightEntry);
   }
 
+  // function to delete a weight entry
+  Future<void> deleteWeightEntry(int entryId) async {
+    await weightEntriesBox.delete(entryId);
+    //delete the entry from the user's weightEntries list
+    User currentUser = usersBox.values.toList().first!;
+    currentUser.weightEntries!.remove(entryId);
+    await saveUserInHive(currentUser);
+  }
+
   // function to get all weight entries from the weightEntries box
   List<WeightEntry?> getAllWeightEntries() {
     return weightEntriesBox.values.toList();

@@ -31,7 +31,16 @@ void main() async {
   ]);
   setupLocator();
   await hiveLocalDb.init();
-  debugPrint(hiveLocalDb.getAllUsers().first!.weightEntries.toString());
+  hiveLocalDb.getAllUsers().forEach((element) {
+    debugPrint(element!.userName.toString());
+    debugPrint(element.weightEntries.toString());
+    debugPrint(element.id.toString());
+  });
+  hiveLocalDb.getAllWeightEntries().forEach((element) {
+    debugPrint(element!.weight.toString());
+    debugPrint(element.dateTime.toString());
+    debugPrint(element.id.toString());
+  });
   runApp(const MyApp());
 }
 
@@ -52,6 +61,7 @@ class _MyAppState extends State<MyApp> {
             ? const ProgressScreen()
             : const CreateUserScreen(),
         WeightScreen.id: (context) => const WeightScreen(),
+        ProgressScreen.id: (context) => const ProgressScreen(),
       },
     );
   }

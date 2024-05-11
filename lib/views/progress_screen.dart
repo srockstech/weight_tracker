@@ -25,11 +25,11 @@ class _ProgressScreenState extends State<ProgressScreen> {
           backgroundColor: Colors.black,
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
               child: Center(
                 child: (hiveLocalDb.getCurrentUserWeightEntries().isNotEmpty)
                     ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
@@ -42,10 +42,17 @@ class _ProgressScreenState extends State<ProgressScreen> {
                             ),
                           ),
                           SizedBox(height: 20),
-                          //show the graph of weight changes
-                          WeightChart(
-                            model: hiveLocalDb.getCurrentUserWeightEntries(),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, WeightScreen.id);
+                            },
+                            child: Text('Add weight entry'),
                           ),
+                          SizedBox(height: 20),
+                          //show the graph of weight changes
+                          // WeightChart(
+                          //   model: hiveLocalDb.getCurrentUserWeightEntries(),
+                          // ),
                           SizedBox(height: 20),
                           // show the list of weight entries
                           WeightList(

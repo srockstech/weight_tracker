@@ -77,7 +77,8 @@ class _WeightScreenState extends State<WeightScreen> {
                       if (model.weightController.text.isNotEmpty) {
                         await model.setWeight(
                             double.parse(model.weightController.text));
-                        Navigator.pop(context);
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, ProgressScreen.id, (route) => false);
                       }
                     },
                     child: Padding(
