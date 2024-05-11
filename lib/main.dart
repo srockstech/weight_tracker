@@ -17,6 +17,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:weight_tracker/locator.dart';
+import 'package:weight_tracker/views/change_user_screen.dart';
 import 'package:weight_tracker/views/create_user_screen.dart';
 import 'package:weight_tracker/views/progress_screen.dart';
 import 'package:weight_tracker/views/weight_screen.dart';
@@ -62,6 +63,8 @@ class _MyAppState extends State<MyApp> {
             : const CreateUserScreen(),
         WeightScreen.id: (context) => const WeightScreen(),
         ProgressScreen.id: (context) => const ProgressScreen(),
+        CreateUserScreen.id: (context) => const CreateUserScreen(),
+        ChangeUserScreen.id: (context) => const ChangeUserScreen(),
       },
     );
   }

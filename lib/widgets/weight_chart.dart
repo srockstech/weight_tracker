@@ -16,7 +16,8 @@ class WeightChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       child: Padding(
-        padding: const EdgeInsets.only(left: 5.0, right: 40, top: 40),
+        padding:
+            const EdgeInsets.only(left: 5.0, right: 40, top: 20, bottom: 15),
         child: LineChart(
           LineChartData(
             lineBarsData: [
@@ -83,7 +84,7 @@ class WeightChart extends StatelessWidget {
               bottomTitles: AxisTitles(
                 axisNameSize: 19,
                 axisNameWidget: Text(
-                  'Date',
+                  'Entries',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 14,
@@ -114,7 +115,7 @@ class WeightChart extends StatelessWidget {
               ),
             ),
             gridData: FlGridData(
-              show: true,
+              show: false,
               drawVerticalLine: true,
               drawHorizontalLine: true,
               getDrawingHorizontalLine: (value) => FlLine(

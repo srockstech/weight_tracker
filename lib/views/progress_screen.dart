@@ -7,6 +7,7 @@ import 'package:weight_tracker/widgets/weight_chart.dart';
 import 'package:weight_tracker/widgets/weight_list.dart';
 
 import 'base_view.dart';
+import 'change_user_screen.dart';
 
 class ProgressScreen extends StatefulWidget {
   static const String id = 'progress_screen';
@@ -32,7 +33,8 @@ class _ProgressScreenState extends State<ProgressScreen> {
             leading: IconButton(
               icon: Icon(Icons.person),
               onPressed: () {
-                // function to change user
+                // navigate to change user screen
+                Navigator.pushNamed(context, ChangeUserScreen.id);
               },
             ),
           ),
@@ -54,17 +56,17 @@ class _ProgressScreenState extends State<ProgressScreen> {
                               fontStyle: FontStyle.italic,
                             ),
                           ),
-                          SizedBox(height: 20),
+                          //show the graph of weight changes
+                          WeightChart(
+                            model: hiveLocalDb.getCurrentUserWeightEntries(),
+                          ),
                           ElevatedButton(
                             onPressed: () {
                               Navigator.pushNamed(context, WeightScreen.id);
                             },
                             child: Text('Add weight entry'),
                           ),
-                          //show the graph of weight changes
-                          WeightChart(
-                            model: hiveLocalDb.getCurrentUserWeightEntries(),
-                          ),
+                          SizedBox(height: 15),
                           Divider(
                             color: Colors.white,
                             thickness: 0.2,

@@ -6,6 +6,7 @@ import 'package:weight_tracker/view_model/create_user_view_model.dart';
 import 'base_view.dart';
 
 class CreateUserScreen extends StatefulWidget {
+  static const String id = 'create_user_screen';
   const CreateUserScreen({super.key});
 
   @override
@@ -40,7 +41,7 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
                   ),
                   SizedBox(height: 40),
                   Text(
-                    'Create a profile to get started',
+                    'Create a profile',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -101,8 +102,10 @@ class _CreateUserScreenState extends State<CreateUserScreen> {
                         return;
                       }
 
-                      await model.createUser();
-                      Navigator.pushNamed(context, ProgressScreen.id);
+                      int newUsersIndex = await model.createUser();
+                      await model.setNewUserToCurrentUser(newUsersIndex);
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, ProgressScreen.id, (route) => false);
                     },
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 20),

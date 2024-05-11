@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:weight_tracker/services/hive_localdb.dart';
+import 'package:weight_tracker/view_model/change_user_view_model.dart';
 import 'package:weight_tracker/view_model/edit_weight_entry_model.dart';
 import 'package:weight_tracker/view_model/progress_view_model.dart';
 import 'package:weight_tracker/view_model/weight_view_model.dart';
@@ -16,6 +17,7 @@ void setupLocator() {
   locator.registerFactory(() => CreateUserViewModel());
   locator.registerFactory(() => ProgressViewModel());
   locator.registerFactory(() => EditWeightEntryViewModel());
+  locator.registerFactory(() => ChangeUserViewModel());
 
   //services
   locator.registerSingleton(HiveLocalDb());

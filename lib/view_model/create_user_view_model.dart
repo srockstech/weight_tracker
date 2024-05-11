@@ -9,15 +9,24 @@ import 'base_view_model.dart';
 class CreateUserViewModel extends BaseModel {
   TextEditingController userNameController = TextEditingController();
 
-  Future<void> createUser() async {
+  Future<int> createUser() async {
     setState(ViewState.busy);
     List<User?> users = hiveLocalDb.getAllUsers();
+    int newIndex = (users.isEmpty) ? 0 : users.last!.id + 1;
     User newUser = User(
       userName: userNameController.text,
-      id: (users.isEmpty) ? 0 : users.last!.id + 1,
+      id: newIndex,
     );
     await hiveLocalDb.saveUserInHive(newUser);
     debugPrint('New user saved in hive');
+    setState(ViewState.idle);
+    return newIndex;
+  }
+
+  Future<void> setNewUserToCurrentUser(int index) async {
+    setState(ViewState.busy);
+    await hiveLocalDb.changeCurrentUser(index);
+    debugPrint('User changed to ${hiveLocalDb.getAllUsers()[index]!.userName}');
     setState(ViewState.idle);
   }
 

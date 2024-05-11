@@ -87,6 +87,20 @@ class HiveLocalDb {
     return usersBox.values.toList().first;
   }
 
+  // change current user
+  Future<void> changeCurrentUser(int index) async {
+    List<User?> users = getAllUsers();
+    users.insert(0, users.removeAt(index));
+    for (int i = 0; i < users.length; i++) {
+      users[i]!.id = i;
+    }
+    // save the updated users list in the hive
+    await usersBox.clear();
+    for (User? user in users) {
+      await saveUserInHive(user);
+    }
+  }
+
   Future<void> closeBoxes() async {
     await weightEntriesBox.close();
     await usersBox.close();
