@@ -1,6 +1,6 @@
 # weight_tracker
 
-An app to track your body weight.
+An app to track your body weight. (Developed by Sarvagya Verma)
 
 ## Screenshots
 
