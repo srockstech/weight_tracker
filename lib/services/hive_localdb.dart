@@ -82,6 +82,11 @@ class HiveLocalDb {
     return currentUserWeightEntries;
   }
 
+  // get current user
+  User? getCurrentUser() {
+    return usersBox.values.toList().first;
+  }
+
   Future<void> closeBoxes() async {
     await weightEntriesBox.close();
     await usersBox.close();

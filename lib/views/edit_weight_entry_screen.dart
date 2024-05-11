@@ -51,6 +51,7 @@ class _EditWeightEntryScreenState extends State<EditWeightEntryScreen> {
                     style: TextStyle(
                       color: Colors.white,
                     ),
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Weight (Kg)',
                       labelStyle: TextStyle(

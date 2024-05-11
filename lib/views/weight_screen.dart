@@ -43,6 +43,7 @@ class _WeightScreenState extends State<WeightScreen> {
                   // text field with rectangular border to collect username
                   TextField(
                     controller: model.weightController,
+                    keyboardType: TextInputType.number,
                     style: TextStyle(
                       color: Colors.white,
                     ),

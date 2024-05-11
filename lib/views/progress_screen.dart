@@ -23,6 +23,19 @@ class _ProgressScreenState extends State<ProgressScreen> {
       builder: (context, model, child) {
         return Scaffold(
           backgroundColor: Colors.black,
+          appBar: AppBar(
+            titleSpacing: 0.0,
+            title: Text(
+              hiveLocalDb.getCurrentUser()!.userName!,
+              style: TextStyle(fontWeight: FontWeight.w900),
+            ),
+            leading: IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {
+                // function to change user
+              },
+            ),
+          ),
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
@@ -50,9 +63,9 @@ class _ProgressScreenState extends State<ProgressScreen> {
                           ),
                           SizedBox(height: 20),
                           //show the graph of weight changes
-                          // WeightChart(
-                          //   model: hiveLocalDb.getCurrentUserWeightEntries(),
-                          // ),
+                          WeightChart(
+                            model: hiveLocalDb.getCurrentUserWeightEntries(),
+                          ),
                           SizedBox(height: 20),
                           // show the list of weight entries
                           WeightList(
